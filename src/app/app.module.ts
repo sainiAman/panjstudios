@@ -9,6 +9,7 @@ import { UserComponent } from './user/user.component';
 import {FormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import { FooterComponent } from './footer/footer.component';
 
 
 const ROUTES = [
@@ -21,7 +22,8 @@ const ROUTES = [
 @NgModule({
   declarations: [
     AppComponent,
-    UserComponent
+    UserComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

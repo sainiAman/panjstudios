@@ -1,0 +1,29 @@
+
+.padding-top-bottom-10{
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+
+.login-top{
+  color: white;
+  /*font-family: sans-serif;*/
+}
+
+
+
+.view {
+  background: url("./../../assets/img.jpg")no-repeat center center;
+  background-size: cover;
+}
+.navbar {
+  background-color: transparent;
+}
+.top-nav-collapse {
+  background-color: #4285F4;
+}
+@media only screen and (max-width: 768px) {
+  .navbar {
+    background-color: #4285F4;
+  }
+}
