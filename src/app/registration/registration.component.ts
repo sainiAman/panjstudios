@@ -15,18 +15,10 @@ export class RegistrationComponent implements OnInit {
   constructor(private registrationService: RegistrationService) { }
 
   onSubmit() {
-    // console.log(this.registrationForm.value.firstname);
-    // console.log(User);
-    // const user = new User(
-    //   this.registrationForm.value.firstname,
-    //   this.registrationForm.value.lastname,
-    //   this.registrationForm.value.email,
-    //   this.registrationForm.value.password
-    // );
-    // console.log(user);
-    // const URL = "http://localhost:5000/api/v1/registration";
-    this.registrationService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
-    this.registrationForm.reset();
+    if (this.registrationForm.valid) {
+      this.registrationService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
+      this.registrationForm.reset();
+    }
   }
 
   ngOnInit() {
@@ -35,7 +27,7 @@ export class RegistrationComponent implements OnInit {
         null,
         [
           Validators.required,
-          Validators.minLength(2),
+          Validators.minLength(3),
           Validators.maxLength(12)
         ]
       ),

@@ -17,8 +17,8 @@ export class RegistrationService{
   addUser(user) {
     // console.log(user);
     const body = JSON.stringify(user);
-    // console.log(body);
+    const URL = "http://localhost:5000/api/v1/registration";
     const headers = new HttpHeaders({'Content-Type': 'application/json'});
-    return this.http.post("/api/v1/registration", body, {headers: headers}).map(res => console.log(res))
+    return this.http.post(URL, body, {headers: headers}).map(res => console.log(res))
   }
 }

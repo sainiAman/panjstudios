@@ -32,8 +32,11 @@
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <div class="md-form">
                 <i class="fa fa-user prefix white-text" style="float: left; position: relative"></i>
-                <input type="text" id="orangeForm-firstname" class="form-control white-text" formControlName="firstname" required mdbActive>
+                <input type="text" id="orangeForm-firstname" #refName class="form-control white-text" formControlName="firstname" required mdbActive>
                 <label for="orangeForm-firstname" class="white-text">First Name</label>
+                <div *ngIf="registrationForm.controls['firstname'].hasError('minlength')" class="alert">
+                  Please enter at least 4
+                </div>
               </div>
 
               <div class="md-form">
