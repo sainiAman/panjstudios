@@ -10,5 +10,11 @@ userController.prototype.getTestData = (req, res) => {
     })
 };
 
+userController.prototype.addUser = (req, res) => {
+
+  console.log(req.body);
+
+};
+
 
 module.exports = new userController();

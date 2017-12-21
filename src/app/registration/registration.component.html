@@ -1,7 +1,7 @@
 <header>
   <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" [containerInside]="false">
     <logo>
-      <a class="logo navbar-brand" href="#"><strong>Panjstudios</strong></a>
+      <a class="logo navbar-brand" href="#"><strong>Logo</strong></a>
     </logo>
     <links>
       <ul class="navbar-nav mr-auto">
@@ -25,36 +25,37 @@
         <!--Register form-->
         <div class="row">
           <div class="col-12 col-sm-6 col-lg-8 mx-auto" style="background-color: rgb(253, 169, 51)">
-            <p class=" text-center padding-top-bottom-10 login-top">Welcome to Panjstudios</p>
+            <p class=" text-center padding-top-bottom-10 login-top">Welcome to Logo</p>
           </div>
           <div class="col-12 col-sm-6 col-lg-8 mx-auto z-depth-3 padding-top-bottom-10">
-            <form>
+
+            <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <div class="md-form">
                 <i class="fa fa-user prefix white-text" style="float: left; position: relative"></i>
-                <input type="text" id="orangeForm-fistname" class="form-control white-text" mdbActive>
-                <label for="orangeForm-fistname" class="white-text">First Name</label>
+                <input type="text" id="orangeForm-firstname" class="form-control white-text" formControlName="firstname" required mdbActive>
+                <label for="orangeForm-firstname" class="white-text">First Name</label>
               </div>
 
               <div class="md-form">
                 <i class="fa fa-user prefix white-text" style="float: left; position: relative"></i>
-                <input type="text" id="orangeForm-lastname" class="form-control" mdbActive>
+                <input type="text" id="orangeForm-lastname" class="form-control" formControlName="lastname" required mdbActive>
                 <label for="orangeForm-lastname" class="white-text">Last Name</label>
               </div>
 
               <div class="md-form">
                 <i class="fa fa-envelope prefix white-text" style="float: left; position: relative"></i>
-                <input type="text" id="orangeForm-email" class="form-control" mdbActive>
+                <input type="text" id="orangeForm-email" class="form-control" formControlName="email" required mdbActive>
                 <label for="orangeForm-email" class="white-text">Email</label>
               </div>
 
               <div class="md-form">
                 <i class="fa fa-lock prefix white-text" style="float: left; position: relative"></i>
-                <input type="password" id="orangeForm-pass" class="form-control" mdbActive>
+                <input type="password" id="orangeForm-pass" class="form-control" formControlName="password" required mdbActive>
                 <label for="orangeForm-pass" class="white-text">Password</label>
               </div>
 
               <div class="text-center">
-                <button class="btn btn-amber waves-light" mdbRippleRadius>Sign up</button>
+                <button class="btn btn-amber waves-light" type="submit" mdbRippleRadius>Sign up</button>
               </div>
 
             </form>
