@@ -10,3 +10,11 @@ mongoose.connection.on('connected', () => {
 
 
 // mongoose connection errors management
+
+
+
+
+
+
+// Bring in Schema and models
+require('./users.model');
