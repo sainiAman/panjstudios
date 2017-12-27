@@ -8,15 +8,26 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule} from '@angular/router';
 import {HttpClientModule} from '@angular/common/http';
+import {UsersService} from './services/users.service';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrationComponent } from './registration/registration.component';
-import {RegistrationService} from './services/registration.service';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { HeaderComponent } from './header/header.component';
 
 
 const ROUTES = [
   {
     path: '',
+    component: HomeComponent
+  },
+  {
+    path: 'registration',
     component: RegistrationComponent
+  },
+  {
+    path:'login',
+    component: LoginComponent
   }
 ];
 
@@ -24,7 +35,10 @@ const ROUTES = [
   declarations: [
     AppComponent,
     FooterComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent,
+    HomeComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +49,7 @@ const ROUTES = [
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [RegistrationService],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

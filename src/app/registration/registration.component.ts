@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {UsersService} from '../services/users.service';
 import { User } from '../models/user.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {RegistrationService} from '../services/registration.service';
+
 
 @Component({
   selector: 'app-registration',
@@ -12,11 +13,11 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
 
-  constructor(private registrationService: RegistrationService) { }
+  constructor(private usersService: UsersService) { }
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.registrationService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
+      this.usersService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
       this.registrationForm.reset();
     }
   }

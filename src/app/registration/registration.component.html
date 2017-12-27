@@ -1,81 +1,50 @@
-<header>
-  <mdb-navbar SideClass="navbar fixed-top navbar-expand-lg navbar-dark scrolling-navbar" [containerInside]="false">
-    <logo>
-      <a class="logo navbar-brand" href="#"><strong>Logo</strong></a>
-    </logo>
-    <links>
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active waves-light" mdbRippleRadius>
-          <a class="nav-link">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">Link</a>
-        </li>
-        <li class="nav-item waves-light" mdbRippleRadius>
-          <a class="nav-link">Profile</a>
-        </li>
-      </ul>
-    </links>
-  </mdb-navbar>
+
   <!-- Main -->
-  <div class="view intro " style="">
+  <div class="view-reg intro " style="">
     <div class="full-bg-img flex-center">
       <div class="container text-center white-text wow fadeInUp">
 
         <!--Register form-->
-        <div class="row">
-          <div class="col-12 col-sm-6 col-lg-8 mx-auto" style="background-color: rgb(253, 169, 51)">
-            <p class=" text-center padding-top-bottom-10 login-top">Welcome to Logo</p>
-          </div>
+        <div class="row" style="margin-top: 200px">
           <div class="col-12 col-sm-6 col-lg-8 mx-auto z-depth-3 padding-top-bottom-10">
-
+            <h3 class=" text-center padding-top-bottom-10  mx-auto" style="background-color: rgb(41, 118, 194); margin-bottom: 20px">Welcome to Logo</h3>
             <form [formGroup]="registrationForm" (ngSubmit)="onSubmit()">
               <div class="md-form">
-                <i class="fa fa-user prefix white-text" style="float: left; position: relative"></i>
-                <input type="text" id="orangeForm-firstname" #refName class="form-control white-text" formControlName="firstname" required mdbActive>
-                <label for="orangeForm-firstname" class="white-text">First Name</label>
-                <div *ngIf="registrationForm.controls['firstname'].hasError('minlength')" class="alert">
-                  Please enter at least 4
-                </div>
+                <i class="fa fa-user prefix" style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
+                <input type="text" id="orangeForm-firstname" class="form-control" formControlName="firstname" required mdbActive>
+                <label for="orangeForm-firstname">First Name</label>
               </div>
 
               <div class="md-form">
-                <i class="fa fa-user prefix white-text" style="float: left; position: relative"></i>
+                <i class="fa fa-user prefix" style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
                 <input type="text" id="orangeForm-lastname" class="form-control" formControlName="lastname" required mdbActive>
-                <label for="orangeForm-lastname" class="white-text">Last Name</label>
+                <label for="orangeForm-lastname">Last Name</label>
               </div>
 
               <div class="md-form">
-                <i class="fa fa-envelope prefix white-text" style="float: left; position: relative"></i>
+                <i class="fa fa-envelope prefix" style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
                 <input type="text" id="orangeForm-email" class="form-control" formControlName="email" required mdbActive>
-                <label for="orangeForm-email" class="white-text">Email</label>
+                <label for="orangeForm-email">Email</label>
               </div>
 
               <div class="md-form">
-                <i class="fa fa-lock prefix white-text" style="float: left; position: relative"></i>
+                <i class="fa fa-lock prefix" style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
                 <input type="password" id="orangeForm-pass" class="form-control" formControlName="password" required mdbActive>
-                <label for="orangeForm-pass" class="white-text">Password</label>
+                <label for="orangeForm-pass">Password</label>
               </div>
 
               <div class="text-center">
-                <button class="btn btn-amber waves-light" type="submit" mdbRippleRadius>Sign up</button>
+                <button class="btn waves-light" type="submit" mdbRippleRadius style="background-color: rgb(41, 118, 194)">Sign up</button>
               </div>
 
             </form>
           </div>
         </div>
-        <!--/Register form-->
-
       </div>
     </div>
   </div>
-  <!-- /.Main -->
-</header>
-<!--Main Navigation-->
 
-<!--Main Layout-->
 <main class="text-center py-5">
-
   <div class="container">
     <div class="row">
       <div class="col-md-12">
