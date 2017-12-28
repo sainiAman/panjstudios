@@ -94,5 +94,19 @@ userController.prototype.authenticate = (req, res, next) => {
 };
 
 
+userController.prototype.getAllUsers = (req, res) => {
+  User.find()
+    .exec((err, users) => {
+      if (err) {
+        res
+          .status(404)
+          .json('No user found')
+      }else{
+        res
+          .status(200)
+          .json(users)
+      }
+    })
+};
 
 module.exports = new userController();

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {UsersService} from '../services/users.service';
+import {AuthService} from '../services/auth.service';
 import { User } from '../models/user.model';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 
@@ -13,11 +13,11 @@ export class RegistrationComponent implements OnInit {
   registrationForm: FormGroup;
 
 
-  constructor(private usersService: UsersService) { }
+  constructor(private authService: AuthService) { }
 
   onSubmit() {
     if (this.registrationForm.valid) {
-      this.usersService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
+      this.authService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
       this.registrationForm.reset();
     }
   }

@@ -7,6 +7,7 @@ module.exports = function () {
 
   api.post('/user/registration', userController.addUser);
   api.post('/user/login', userController.login);
+  api.get('/users', userController.getAllUsers);
 
   return api;
 };

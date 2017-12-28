@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpResponse} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/catch';
@@ -10,7 +10,7 @@ import {User} from '../models/user.model';
 
 
 @Injectable()
-export class UsersService{
+export class AuthService{
 
   constructor(private http: HttpClient) { }
 
