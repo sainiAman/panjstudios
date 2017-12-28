@@ -13,7 +13,7 @@
           <li class="nav-item waves-light" mdbRippleRadius>
             <a class="nav-link">Profile</a>
           </li>
-          <li *ngIf="isLoggedIn()" class="nav-item waves-light" mdbRippleRadius>
+          <li *ngIf="!isLoggedIn()" class="nav-item waves-light" mdbRippleRadius>
             <a class="nav-link" (click)="onLogout()">Logout</a>
           </li>
         </ul>

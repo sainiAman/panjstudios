@@ -14,6 +14,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
+import {LoggedInGuard} from './services/logged-in.guard';
 
 
 const ROUTES = [
@@ -23,11 +24,13 @@ const ROUTES = [
   },
   {
     path: 'registration',
-    component: RegistrationComponent
+    component: RegistrationComponent,
+    canActivate: [LoggedInGuard]
   },
   {
     path:'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [LoggedInGuard]
   }
 ];
 
@@ -49,7 +52,7 @@ const ROUTES = [
     MDBBootstrapModule.forRoot()
   ],
   schemas: [ NO_ERRORS_SCHEMA ],
-  providers: [UsersService],
+  providers: [UsersService, LoggedInGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

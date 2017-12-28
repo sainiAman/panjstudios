@@ -36,6 +36,6 @@ export class UsersService{
   }
 
   isLoggedIn() {
-    return localStorage.getItem('token') !== null;
+    return localStorage.getItem('token') == null;
   }
 }
