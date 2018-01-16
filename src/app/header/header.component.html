@@ -11,7 +11,7 @@
             <a class="nav-link">Home <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item waves-light" mdbRippleRadius>
-            <a class="nav-link">Profile</a>
+            <a class="nav-link" (click)="getSingleProfile()">Profile</a>
           </li>
           <li *ngIf="!isLoggedIn()" class="nav-item waves-light" mdbRippleRadius>
             <a class="nav-link" (click)="onLogout()">Logout</a>

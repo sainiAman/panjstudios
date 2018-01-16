@@ -4,7 +4,7 @@ const bcrypt = require('bcrypt-nodejs');
 let jwt = require('jsonwebtoken');
 let User = mongoose.model('User');
 
-// let User = require('../data/users.model');
+
 let userController = function () {};
 
 
@@ -54,7 +54,7 @@ userController.prototype.login = (req, res) => {
     }else{
       if (bcrypt.compareSync(password, user.password)) {
         console.log('user found', user);
-        let token = jwt.sign({email: email}, 'labhLavoJeLabhHunda', {expiresIn: 3600});
+        let token = jwt.sign({email: email, userId: user._id}, 'aman', {expiresIn: 3600});
         res
           .status(200)
           .json({
@@ -75,14 +75,20 @@ userController.prototype.authenticate = (req, res, next) => {
   let headerExists = req.headers.authorization;
   if (headerExists) {
     let token = req.headers.authorization.split(' ')[1];
-    jwt.verify(token, 'labhLavoJeLabhHunda', (err, decoded) => {
-      if (error) {
-        console.log(error);
+    console.log('token', token);
+    jwt.verify(token, 'aman', function (err, decoded) {
+      if (err) {
+        console.log('error');
         res
           .status(401)
           .json('unauthorized')
       }else{
-        req.user = decoded.email;
+        res.user = decoded.email;
+        res.userId = decoded.userId;
+        console.log('email from authenticate', decoded.email);
+        console.log(decoded.userId);
+        // res
+        //   .json(decoded);
         next()
       }
     })
@@ -95,7 +101,7 @@ userController.prototype.authenticate = (req, res, next) => {
 
 
 userController.prototype.getAllUsers = (req, res) => {
-  User.find()
+  User.find({}, '-password -__v')   // '-password' will restrict sending password in details
     .exec((err, users) => {
       if (err) {
         res
@@ -108,5 +114,46 @@ userController.prototype.getAllUsers = (req, res) => {
       }
     })
 };
+
+userController.prototype.getSingleUser = (req, res) => {
+  // console.log('req.body', req.body);
+  let userId = req.params.userId;
+  User.findById(userId, '-password -__v').exec((err, user) => {
+    if (err) {
+      res
+        .status(404)
+        .json('No user found')
+    }else{
+      res
+        .status(200)
+        .json(user)
+    }
+  })
+};
+
+userController.prototype.getUserId = (req, res) => {
+  let headerExists = req.headers.authorization;
+  if (headerExists) {
+    let token = req.headers.authorization.split(' ')[1];
+    console.log('token', token);
+    jwt.verify(token, 'aman', function (err, decoded) {
+      if (err) {
+        console.log('error');
+        res
+          .status(401)
+          .json('unauthorized')
+      }else{
+        res.userId = decoded.userId;
+        console.log('userId', decoded.userId);
+        res.json(decoded.userId)
+      }
+    })
+  }else{
+    res
+      .status(403)
+      .json('No token provided')
+  }
+};
+
 
 module.exports = new userController();

@@ -9,36 +9,43 @@ import {Router} from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  loginForm: FormGroup;
+  // loginForm: FormGroup;
+  loginData = {};
 
   constructor(private authService: AuthService, private router: Router) { }
 
-  onSubmit() {
-    if (this.loginForm.valid) {
-      // console.log(this.loginForm.value);
-      this.authService.userLogin(this.loginForm.value).subscribe(data => {
-        localStorage.setItem('token', data['token']);
-        this.router.navigateByUrl('/');
-      });
-      this.loginForm.reset();
-    }
+  // onSubmit() {
+  //   if (this.loginForm.valid) {
+  //     // console.log(this.loginForm.value);
+  //     this.authService.userLogin(this.loginForm.value).subscribe(data => {
+  //       localStorage.setItem('token', data['token']);
+  //       this.router.navigateByUrl('/');
+  //     });
+  //     this.loginForm.reset();
+  //   }
+  // }
+
+  getUser() {
+    console.log(this.loginData);
+    this.authService.userLogin(this.loginData);
+    this.router.navigateByUrl('/');
   }
 
   ngOnInit() {
-    this.loginForm = new FormGroup({
-      email: new FormControl(
-        null,
-        [
-          Validators.required
-        ]
-      ),
-      password: new FormControl(
-        null,
-        [
-          Validators.required
-        ]
-      )
-    })
+    // this.loginForm = new FormGroup({
+    //   email: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required
+    //     ]
+    //   ),
+    //   password: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required
+    //     ]
+    //   )
+    // })
   }
 
 }

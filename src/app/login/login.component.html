@@ -3,23 +3,26 @@
 <div class="view-login intro">
   <div class="full-bg-img flex-center">
     <div class="container text-center white-text wow fadeInUp">
-      <div class="row" style="margin-top: 200px">
-        <div class="col-12 col-sm-6 col-lg-6 mx-auto z-depth-3 padding-top-bottom-10">
-          <h3 class=" text-center padding-top-bottom-10  mx-auto" style="background-color: rgb(41, 118, 194); margin-bottom: 20px">login</h3>
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="row" style="margin-top: 200px;">
+        <div class="col-12 col-sm-6 col-lg-6 mx-auto padding-top-bottom-10 imbed-login">
+          <h3 class=" text-center padding-top-bottom-10  mx-auto" style="margin-bottom: 20px">login</h3>
+          <!--<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">-->
+          <form>
             <div class="md-form">
-              <i class="fa fa-envelope prefix" style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
-              <input type="text" id="orangeForm-email" class="form-control" formControlName="email" required mdbActive>
-              <label for="orangeForm-email">Email</label>
+              <i class="fa fa-envelope prefix" style="float: left; position: relative; color: rgb(205, 103, 36)"></i>
+              <!--<input type="text" id="orangeForm-email" class="form-control" formControlName="email" style="color: white" required mdbActive>-->
+              <input type="text" id="orangeForm-email" class="form-control" style="color: white" required mdbActive [(ngModel)]="loginData.email" name="email">
+              <label for="orangeForm-email" style="color: white">Email</label>
             </div>
             <div class="md-form">
-              <i class="fa fa-lock prefix " style="float: left; position: relative; color: rgb(41, 118, 194)"></i>
-              <input type="password" id="orangeForm-pass" class="form-control" formControlName="password" required mdbActive>
-              <label for="orangeForm-pass">Password</label>
+              <i class="fa fa-lock prefix " style="float: left; position: relative; color: rgb(205, 103, 36)"></i>
+              <!--<input type="password" id="orangeForm-pass" class="form-control" formControlName="password" style="color: white" required mdbActive>-->
+              <input type="password" id="orangeForm-pass" class="form-control"  style="color: white" required mdbActive [(ngModel)]="loginData.password" name="password">
+              <label for="orangeForm-pass" style="color: white">Password</label>
             </div>
 
             <div class="text-center">
-              <button class="btn waves-light" type="submit" mdbRippleRadius style="background-color: rgb(41, 118, 194)">Log in</button>
+              <button class="btn waves-light" mdbRippleRadius style="background-color: rgb(205, 103, 36); font-size: medium" (click)="getUser()">Log in</button>
             </div>
           </form>
         </div>

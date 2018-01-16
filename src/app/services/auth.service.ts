@@ -14,22 +14,43 @@ export class AuthService{
 
   constructor(private http: HttpClient) { }
 
-  addUser(user) {
-    // console.log(user);
-    let body = JSON.stringify(user);
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
-    const URL = "http://localhost:5000/api/v1/user/registration";
+  // addUser(user) {
+  //   // console.log(user);
+  //   let body = JSON.stringify(user);
+  //   let headers = new HttpHeaders({'Content-Type': 'application/json'});
+  //   const URL = "http://localhost:5000/api/v1/users/registration";
+  //
+  //   return this.http.post(URL, body, {headers: headers}).subscribe(res => {
+  //     console.log(res);
+  //     localStorage.setItem('token', res['token']);
+  //   })
+  // }
 
-    return this.http.post(URL, body, {headers: headers}).map(res => console.log(res))
+  userRegister(registerData) {
+    const URL = "http://localhost:5000/api/v1/users/registration";
+    this.http.post(URL, registerData).subscribe(res => {
+      console.log(res);})
   }
 
-  userLogin(user) {
-    const URL = "http://localhost:5000/api/v1/user/login";
-    let headers = new HttpHeaders({'Content-Type': 'application/json'});
-    let body = JSON.stringify(user);
-
-    return this.http.post(URL, body, {headers: headers}).map(res => res);
+  userLogin(loginData) {
+    const URL = "http://localhost:5000/api/v1/users/login";
+    this.http.post(URL, loginData).subscribe(res => {
+      console.log(res);
+      localStorage.setItem('token', res['token'])
+    })
   }
+
+  getToken() {
+    return localStorage.getItem('token')
+  }
+
+  // userLogin(user) {
+  //   const URL = "http://localhost:5000/api/v1/users/login";
+  //   let headers = new HttpHeaders({'Content-Type': 'application/json'});
+  //   let body = JSON.stringify(user);
+  //   return this.http.post(URL, body, {headers: headers}).map(res => res);
+  // }
+
 
   logout() {
     localStorage.clear();
@@ -37,5 +58,8 @@ export class AuthService{
 
   isLoggedIn() {
     return localStorage.getItem('token') == null;
+  }
+  isNotLoggedIn() {
+    return localStorage.getItem('token') !== null;
   }
 }

@@ -10,51 +10,57 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit {
-  registrationForm: FormGroup;
+  // registrationForm: FormGroup;
+  registerData = {};
 
 
   constructor(private authService: AuthService) { }
 
-  onSubmit() {
-    if (this.registrationForm.valid) {
-      this.authService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
-      this.registrationForm.reset();
-    }
+  addUser() {
+    console.log(this.registerData);
+    this.authService.userRegister(this.registerData)
   }
 
+  // onSubmit() {
+  //   if (this.registrationForm.valid) {
+  //     this.authService.addUser(this.registrationForm.value).subscribe(value => console.log(value));
+  //     this.registrationForm.reset();
+  //   }
+  // }
+
   ngOnInit() {
-    this.registrationForm = new FormGroup({
-      firstname: new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.minLength(3),
-          Validators.maxLength(12)
-        ]
-      ),
-      lastname: new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.minLength(2),
-          Validators.maxLength(12)
-        ]
-      ),
-      email: new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.maxLength(50)
-        ]
-      ),
-      password: new FormControl(
-        null,
-        [
-          Validators.required,
-          Validators.minLength(6),
-          Validators.maxLength(50)
-        ]
-      )
-    });
+    // this.registrationForm = new FormGroup({
+    //   firstname: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required,
+    //       Validators.minLength(3),
+    //       Validators.maxLength(12)
+    //     ]
+    //   ),
+    //   lastname: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required,
+    //       Validators.minLength(2),
+    //       Validators.maxLength(12)
+    //     ]
+    //   ),
+    //   email: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required,
+    //       Validators.maxLength(50)
+    //     ]
+    //   ),
+    //   password: new FormControl(
+    //     null,
+    //     [
+    //       Validators.required,
+    //       Validators.minLength(6),
+    //       Validators.maxLength(50)
+    //     ]
+    //   )
+    // });
   }
 }

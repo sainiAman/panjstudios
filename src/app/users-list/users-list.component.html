@@ -1,5 +1,9 @@
 <div class="row" style="margin-top: 200px; margin-left: 50px">
-  <div *ngFor="let user of users">
-    {{user.email}}
-  </div>
+  <table>
+    <tr *ngFor="let user of users">
+      <div [routerLink]="['/profile', user._id]">
+        {{user.email}}
+      </div>
+    </tr>
+  </table>
 </div>
